@@ -1,0 +1,25 @@
+*.cfg.py
+*.cfg.yml
+*.db
+*.db-journal
+*.egg
+*.egg-info
+*.ipynb
+*.pyc
+*.tmp
+*.yml
+*.yaml
+.*.swp
+.coverage
+.DS_Store
+.idea
+.ipynb_checkpoints
+.tox
+__pycache__
+build
+dist
+docs/_build
+htmlcov
+
+# ignore intellij/pycharm project conf file
+*.iml
