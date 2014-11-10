@@ -1,0 +1,11 @@
+<http://dbpedia.org/resource/The_Lord_of_the_Rings_(film_series)> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Film> .
+<http://dbpedia.org/resource/The_Lord_of_the_Rings_(film_series)> <http://dbpedia.org/ontology/director> <http://dbpedia.org/resource/Peter_Jackson> .
+<http://dbpedia.org/resource/The_Lord_of_the_Rings_(film_series)> <http://dbpedia.org/property/name> "The Lord of the Rings"@en .
+
+<http://dbpedia.org/resource/Peter_Jackson> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Agent> .
+<http://dbpedia.org/resource/Peter_Jackson> <http://dbpedia.org/ontology/birthDate> "1961-10-31+02:00"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://dbpedia.org/resource/Peter_Jackson> <http://xmlns.com/foaf/0.1/name> "Peter Jackson"@en .
+
+<http://dbpedia.org/resource/Cardcaptor_Sakura> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Manga> .
+<http://dbpedia.org/resource/Cardcaptor_Sakura>	<http://dbpedia.org/property/name> "Cardcaptor Sakura"@en .
+<http://dbpedia.org/resource/Cardcaptor_Sakura>	<http://dbpedia.org/property/author> <http://dbpedia.org/resource/Clamp_(manga_artists)> .

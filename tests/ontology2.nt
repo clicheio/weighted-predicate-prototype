@@ -1,0 +1,11 @@
+<http://cliche.io/resource/Film/The_Lord_of_the_Rings> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://cliche.io/ontology/Film> .
+<http://cliche.io/resource/Film/The_Lord_of_the_Rings> <http://cliche.io/ontology/director> <http://cliche.io/resource/Peter_Jackson>.
+<http://cliche.io/resource/Film/The_Lord_of_the_Rings> <http://cliche.io/property/name> "The Lord of the Rings"@en.
+
+<http://cliche.io/resource/Peter_Jackson> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://cliche.io/ontology/Person> .
+<http://cliche.io/resource/Peter_Jackson> <http://cliche.io/ontology/birthDate> "1961-10-31+02:00"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://cliche.io/resource/Peter_Jackson> <http://xmlns.com/foaf/0.1/name> "Peter Jackson"@en .
+
+<http://cliche.io/resource/Cardcaptor_Sakura> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://cliche.io/ontology/Manga> .
+<http://cliche.io/resource/Cardcaptor_Sakura> <http://cliche.io/property/name> "Cardcaptor Sakura"@en .
+<http://cliche.io/resource/Cardcaptor_Sakura> <http://cliche.io/property/author> <http://cliche.io/resource/Clamp_(manga_artists)> .
