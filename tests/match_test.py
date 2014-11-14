@@ -4,12 +4,17 @@ from rdflib.graph import Graph
 from rdflib.term import URIRef
 from rdflib.util import guess_format
 
-from wpp.alignment import align_graphs_from_files, entity_pairs
+from wpp.alignment import (align_graphs_from_files, combined_probability,
+                           entity_pairs)
 
 ontology_path_1 = os.path.join('tests', 'ontology1.nt')
 ontology_path_2 = os.path.join('tests', 'ontology2.nt')
 param_path = os.path.join('tests', 'parameters.py')
 
+
+# FIXME: the all test depend on the same test case.
+#        (changing a test case demands also fix all the test.)
+#        separate them.
 
 def get_example():
     ontology_1 = Graph()
@@ -38,24 +43,41 @@ def test_entity_pairs():
     }
 
 
+def test_object_equivalance():
+    # FIXME: the 'object_equivalance' function is also tested in
+    #        'test_align_graphs_from_files'.
+    #        seperate the test case and fill this test.
+    pass
+
+
 def test_correspondence():
-    # FIXME: fill this test after the 'correspondence' function is completed
+    # FIXME: the 'correspondence' function is also tested in
+    #        'test_align_graphs_from_files'.
+    #        seperate the test case and fill this test.
     pass
 
 
 def test_align_graphs_from_files():
     res_generator = align_graphs_from_files(ontology_path_1, ontology_path_2,
                                             param_path)
-
-    # FIXME: fix the RHS of the assert statment for the result checking
-    # after complete the 'correspondence' function
     res = {c for c in res_generator}
+
     assert res == {
         (URIRef('http://dbpedia.org/resource/'
                 'The_Lord_of_the_Rings_(film_series)'),
          URIRef('http://cliche.io/resource/Film/The_Lord_of_the_Rings'),
-         1.0),
+         combined_probability([0.1*0.9, 0.9*1.0])),
         (URIRef('http://dbpedia.org/resource/Peter_Jackson'),
          URIRef('http://cliche.io/resource/Peter_Jackson'),
-         1.0),
+         combined_probability([0.9*1.0, 0.95*1.0])),
     }
+
+
+def test_combined_probability():
+    probs_1 = [0.6, 0.72]
+    assert combined_probability(probs_1) == \
+        0.6*0.72 / (0.6*0.72 + (1-0.6)*(1-0.72))
+
+    probs_2 = [0.1, 0.2, 0.3]
+    assert combined_probability(probs_2) == \
+        0.1*0.2*0.3 / (0.1*0.2*0.3 + (1-0.1)*(1-0.2)*(1-0.3))
