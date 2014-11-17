@@ -5,7 +5,7 @@ from rdflib.term import URIRef
 from rdflib.util import guess_format
 
 from wpp.alignment import (align_graphs_from_files, combined_probability,
-                           entity_pairs)
+                           entity_pairs, voted_confidence)
 
 ontology_path_1 = os.path.join('tests', 'ontology1.nt')
 ontology_path_2 = os.path.join('tests', 'ontology2.nt')
@@ -41,6 +41,18 @@ def test_entity_pairs():
         (URIRef('http://dbpedia.org/resource/Peter_Jackson'),
          URIRef('http://cliche.io/resource/Peter_Jackson')),
     }
+
+
+def test_voted_confidence():
+    init_conf = 0.5  # initial confidence of some fact
+    user_weight = 0.1  # weight of an user vote
+
+    conf = init_conf
+    conf = voted_confidence(0.0, conf, user_weight)  # a downvote
+    conf = voted_confidence(0.0, conf, user_weight)  # a downvote
+    conf = voted_confidence(1.0, conf, user_weight)  # an upvote
+
+    assert conf == 0.9*(0.9*(0.9*init_conf)) + 0.1*1.0
 
 
 def test_object_equivalance():

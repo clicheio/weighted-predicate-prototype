@@ -5,7 +5,8 @@ from rdflib.namespace import RDF
 from rdflib.util import guess_format
 
 __all__ = ('align_graphs', 'align_graphs_from_files', 'combined_probability',
-           'correspondence', 'entity_pairs', 'object_equivalance')
+           'correspondence', 'entity_pairs', 'object_equivalance',
+           'voted_confidence')
 
 
 def combined_probability(probs):
@@ -18,6 +19,14 @@ def combined_probability(probs):
                                           product_of_c_probs)
 
     return product_of_probs / (product_of_probs + product_of_c_probs)
+
+
+def voted_confidence(user_prob, prior_conf, user_weight):
+    """return the new confidence of correspondence that downvoted by an user.
+    expect all the augments range from 0.0 to 1.0
+    """
+
+    return (1.0 - user_weight) * prior_conf + user_weight * user_prob
 
 
 def entity_pairs(ontology_1, ontology_2, parameters):
